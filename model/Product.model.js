@@ -1,43 +1,44 @@
-const { Sequelize, DataTypes } = require("sequelize");
+const {
+    Sequelize,
+    DataTypes
+} = require("sequelize");
 // const Sequelize = require("sequelize");
 const sequelize = new Sequelize(
- 'mge-training',
- 'root',
- '2242374',
-  {
-    host: 'localhost',
-    dialect: 'mysql'
-  }
+    'mge-training-node',
+    'root',
+    '', {
+        host: 'localhost',
+        dialect: 'mysql'
+    }
 );
 
 const Product = sequelize.define("Product", {
-        ID: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        },
-        Created: {
-            type: DataTypes.DATE,
-        },  
-        LastEdited: {
-            type: DataTypes.DATE,
-        },  
-        Title: {
+    ID: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    Created: {
+        type: DataTypes.DATE,
+    },
+    LastEdited: {
+        type: DataTypes.DATE,
+    },
+    Title: {
         type: DataTypes.STRING,
-        },
-        Description: {
+    },
+    Description: {
         type: DataTypes.STRING,
-        },    
-        Price: {
+    },
+    Price: {
         type: DataTypes.DOUBLE,
-        }
-    });
+    }
+});
 
-    sequelize.sync().then(() => {
-        console.log('Book table created successfully!');
-     }).catch((error) => {
-        console.error('Unable to create table : ', error);
-     });
-         
+sequelize.sync().then(() => {
+    console.log('Book table created successfully!');
+}).catch((error) => {
+    console.error('Unable to create table : ', error);
+});
+
 module.exports = Product;
-
